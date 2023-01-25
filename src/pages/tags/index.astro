@@ -1,0 +1,14 @@
+---
+import BlogPost from "../../components/BlogPost.astro";
+import Tags from "../../components/Tags.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const allPosts = await Astro.glob('../posts/*.md')
+// const tags = ["astro", "successes", "community", "setbacks", "learning in public"];
+const pageTitle = "Index Tags"
+
+const allTags = [...new Set(allPosts.map(post => post.frontmatter.tags).flat())]
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <Tags allTags={allTags} />
+</BaseLayout>
